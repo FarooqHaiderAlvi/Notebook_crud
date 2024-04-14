@@ -4,10 +4,10 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator')
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
-
+const fetchUser = require('../middleware/fetchUser')
 const JWT_SECRET = "learnmern";
 
-//creating a user using post requesti
+//creating a user using post request
 router.post('/createuser', [
     body('name').isLength({ min: 3 }),
     body('email').isEmail(),
@@ -50,7 +50,7 @@ router.post('/createuser', [
 
 })
 
-
+//route 2: for logIn
 router.post('/login', [
     body('email').isEmail(),
     body('password', "password cannot be empty").exists(),
@@ -91,5 +91,26 @@ router.post('/login', [
 
 
 })
+
+
+//route 3: getting info of login user
+
+router.post('/getUser', fetchUser ,async (req, res) => {
+
+    try{
+        
+        userId=req.user.id
+        const user= await User.findById(userId).select("-password")
+         res.send(user)
+    }
+    catch (error) {
+        console.error(error.message);
+        res.status(500).send("interal server error occured.");
+    }
+
+
+})
+
+
 
 module.exports = router;
