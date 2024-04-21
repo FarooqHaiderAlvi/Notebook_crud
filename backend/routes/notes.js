@@ -89,9 +89,24 @@ router.delete('/deleteNote/:id', fetchUser, async (req, res) => {
         return res.status(401).send("Note Found///")
     }
 
-    Notes.findByIdAndDelete({ _id: req.params.id })
-        .then(users => res.json(users))
-        .catch(err => console.log(err))
+    // Notes.findByIdAndDelete({ _id: req.params.id })
+    //     .then(users => res.json(users))
+    //     .catch(err => console.log(err))
+
+
+    try{
+        await Notes.findByIdAndDelete(req.params.id)
+        res.json({message:"note deleted successfully."})
+    }catch(error){
+        console.error(error.message)
+    }
 })
 
 module.exports = router;
+
+
+
+// When you execute a MongoDB operation using Mongoose
+//  (like Notes.findByIdAndDelete()), it returns a promise.
+//   Here's why .then() and .catch() are used in this context:
+
