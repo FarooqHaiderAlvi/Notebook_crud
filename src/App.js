@@ -4,11 +4,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import About from './Components/About';
+import NoteState from './context/NoteState';
 
 function App() {
   return (
     <>
-      
+      <NoteState>
+
       <BrowserRouter>
         <Routes>
 
@@ -21,6 +23,7 @@ function App() {
 
 
       </BrowserRouter>
+      </NoteState>
       
     </>
   );
