@@ -56,13 +56,10 @@ export default function FetchNotes() {
                         <th scope="row">{note.title}</th>
                         <td>{note.description}</td>
                         <td>{note.tag}</td>
-
                       </tr>
                     )
-
                   })
                 }
-
               </tbody>
             </table>
           </div>

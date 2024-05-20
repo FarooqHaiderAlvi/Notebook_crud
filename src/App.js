@@ -11,20 +11,20 @@ function App() {
     <>
       <NoteState>
 
-      <BrowserRouter>
-        <Routes>
+        <BrowserRouter>
+          <Routes>
 
-          <Route path="/" exact element={<><Navbar/> <Home /></>} />
-          <Route path="/about" exact element={<><Navbar/> <About/></>} />
-          <Route path="/fetchNotes" exact element={<><Navbar/> <FetchNotes/></>} />
-          
-
-        </Routes>
+            <Route path="/" exact element={<><Navbar /> <Home /></>} />
+            <Route path="/about" exact element={<><Navbar /> <About /></>} />
+            <Route path="/fetchNotes" exact element={<><Navbar /> <FetchNotes /></>} />
 
 
-      </BrowserRouter>
+          </Routes>
+
+
+        </BrowserRouter>
       </NoteState>
-      
+
     </>
   );
 }
