@@ -7,7 +7,7 @@ export default function About() {
     console.log(a)
     return (
         <>
-            I am about file {a};
+            I am about file 
         </>
     );
 }

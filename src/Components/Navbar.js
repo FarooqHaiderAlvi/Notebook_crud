@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-export default function Navbar() {
 
-    const location = useLocation()
+export default function Navbar() {
+    const location = useLocation();
+    
     useEffect(() => {
-        console.log(location)
-    }, [location])
+        console.log(location);
+    }, [location]);
 
     return (
         <>
@@ -19,16 +20,30 @@ export default function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <NavLink className={`nav-link  ${location.pathname === '/' ? "active" : ""}`} active aria-current="page" to="/">Home</NavLink>
+                                <NavLink
+                                    className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+                                    aria-current="page"
+                                    to="/"
+                                >
+                                    Home
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className={`nav-link  ${location.pathname === '/about' ? "active" : ""}`} to="/about">About</NavLink>
+                                <NavLink
+                                    className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+                                    to="/about"
+                                >
+                                    About
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className={`nav-link  ${location.pathname === '/fetchNotes' ? "active" : ""}`} to="/fetchNotes">Fetch Notes</NavLink>
+                                <NavLink
+                                    className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+                                    to="/fetchNotes"
+                                >
+                                    Fetch Notes
+                                </NavLink>
                             </li>
-
-
                         </ul>
                         <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -39,6 +54,4 @@ export default function Navbar() {
             </nav>
         </>
     );
-
-
 }
