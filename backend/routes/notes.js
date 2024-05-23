@@ -37,7 +37,7 @@ router.post('/createNote', fetchUser, [
 
     try {
 
-        notes = await Notes.create({
+        const notes = await Notes.create({
             user: req.user.id,
             title: req.body.title,
             description: req.body.description,
@@ -77,6 +77,7 @@ router.put('/updateNote/:id', fetchUser, async (req, res) => {
 
 })
 
+//delete a note with particular id 
 router.delete('/deleteNote/:id', fetchUser, async (req, res) => {
     const { title, description, tag } = req.body
 
@@ -89,14 +90,27 @@ router.delete('/deleteNote/:id', fetchUser, async (req, res) => {
         return res.status(401).send("Note Found///")
     }
 
-    
 
-    try{
+
+    try {
         await Notes.findByIdAndDelete(req.params.id)
-        res.json({message:"note deleted successfully."})
-    }catch(error){
+        res.json({ message: "note deleted successfully." })
+    } catch (error) {
         console.error(error.message)
     }
+})
+
+//delete all notes with one 
+router.delete('/deleteAllNotes', fetchUser, async (req, res) => {
+   const { title, description, tag } = req.body
+
+   
+   try {
+       await Notes.deleteMany()
+       res.json({ message: "all notes deleted successfully." })
+   } catch (error) {
+       console.error(error.message)
+   }
 })
 
 module.exports = router;

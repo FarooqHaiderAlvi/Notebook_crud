@@ -9,7 +9,7 @@ export default function Note() {
 
    useEffect(()=>{
        fetchNotes()
-   },[])
+   },[notes])
   return (
     <>
       <AddNote/>
