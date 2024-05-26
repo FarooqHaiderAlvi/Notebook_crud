@@ -16,7 +16,7 @@ function App() {
 
             <Route path="/" exact element={<><Navbar /> <Home /></>} />
             <Route path="/about" exact element={<><Navbar /> <About /></>} />
-            <Route path="/fetchNotes" exact element={<><Navbar /> <FetchNotes /></>} />
+            {/* <Route path="/fetchNotes" exact element={<><Navbar /> <FetchNotes /></>} /> */}
 
 
           </Routes>
